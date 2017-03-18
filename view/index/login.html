@@ -13,7 +13,7 @@
     <div class="login">
         <div class="login-wrap">
             <div class="avatar">
-                <img src="./uploads/monkey.png" class="img-circle" alt="">
+                <img src="/uploads/monkey.png" class="img-circle" alt="">
             </div>
             <form id="loginForm" class="col-xs-offset-1 col-xs-10">
                 <div class="input-group input-group-lg">
@@ -33,6 +33,7 @@
         </div>
     </div>
     <script src="/public/assets/jquery/jquery.min.js"></script>
+    <script src="/public/assets/jquery-cookie/jquery.cookie.js"></script>
     <script src="/public/assets/bootstrap/js/bootstrap.min.js"></script>
     <script>
         $("#loginForm").submit(function () {
@@ -44,15 +45,16 @@
                 dataType:"json",
                 success:function (data) {
                     if(data.code==200){
-                        location.href = "/index/index";
+                        var logInfo = JSON.stringify(data.result);
+                        //实现cookie数据的跨页面共享
+                        $.cookie("logInfo",logInfo,{path:"/"});
+                        location.href = "/index";
                     }
                 },
                 error:function (data) {
                     //错误提示
                 }
             });
-
-
             return false; //阻止表单的默认提交行为
         });
 

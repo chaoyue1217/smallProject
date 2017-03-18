@@ -1,4 +1,4 @@
-pu./blic<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -176,8 +176,8 @@ pu./blic<!DOCTYPE html>
             </div>
         </div>
     </div>
-    
     <script src="/public/assets/jquery/jquery.min.js"></script>
+    <script src="/public/assets/jquery-cookie/jquery.cookie.js"></script>
     <script src="/public/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="/public/assets/nprogress/nprogress.js"></script>
     <script src="/public/assets/echarts/echarts.min.js"></script>
@@ -210,6 +210,11 @@ pu./blic<!DOCTYPE html>
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
 
+    </script>
+    <script>
+        var obj = JSON.parse($.cookie("logInfo"));
+        $(".aside .profile img").attr("src",obj.tc_avatar);
+        $(".aside .profile h4").html(obj.tc_name);
     </script>
 </body>
 </html>
