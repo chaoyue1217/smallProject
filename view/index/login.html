@@ -3,10 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>学IT - 后台管理系统</title>
-    <link rel="stylesheet" href="/public/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/public/assets/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="/public/assets/nprogress/nprogress.css">
-    <link rel="stylesheet" href="/public/less/index.css">
+    <?php include('/view/common/style.html') ?>
 </head>
 <body>
     <!-- 登录 -->
@@ -32,32 +29,8 @@
             </form>
         </div>
     </div>
-    <script src="/public/assets/jquery/jquery.min.js"></script>
-    <script src="/public/assets/jquery-cookie/jquery.cookie.js"></script>
-    <script src="/public/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script>
-        $("#loginForm").submit(function () {
-            var formData = $(this).serialize();
-            $.ajax({
-                url:"/api/login",
-                type:"post",
-                data:formData,
-                dataType:"json",
-                success:function (data) {
-                    if(data.code==200){
-                        var logInfo = JSON.stringify(data.result);
-                        //实现cookie数据的跨页面共享
-                        $.cookie("logInfo",logInfo,{path:"/"});
-                        location.href = "/index";
-                    }
-                },
-                error:function (data) {
-                    //错误提示
-                }
-            });
-            return false; //阻止表单的默认提交行为
-        });
+    <?php include('/view/common/script.html') ?>
 
-    </script>
+
 </body>
 </html>
