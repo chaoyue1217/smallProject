@@ -1,4 +1,4 @@
-define(["jquery","cookie"],function ($) {
+define(["jquery","template","cookie"],function ($,template) {
 
     /*NProgress.start();
 
@@ -7,7 +7,6 @@ define(["jquery","cookie"],function ($) {
     $('.navs ul').prev('a').on('click', function () {
         $(this).next().slideToggle();
     });
-
     var pathName = location.pathname;
     //没有登录的时候跳转到登录页
     var flag = $.cookie("PHPSESSID");
@@ -15,7 +14,9 @@ define(["jquery","cookie"],function ($) {
         //没有登录
         location.href = '/login';
     }
-    //实现登录功能
+    /*
+        实现登录功能
+     */
     $("#loginForm").submit(function () {
         var formData = $(this).serialize();
         $.ajax({
@@ -38,11 +39,10 @@ define(["jquery","cookie"],function ($) {
         return false; //阻止表单的默认提交行为
     });
 
-    //主页面渲染
-    var obj = JSON.parse($.cookie("logInfo"));
-    $(".aside .profile img").attr("src",obj.tc_avatar);
-    $(".aside .profile h4").html(obj.tc_name);
 
+    /*
+        退出功能
+     */
     $("#logoutId").click(function () {
         $.ajax({
             type:"post",
@@ -55,4 +55,27 @@ define(["jquery","cookie"],function ($) {
             }
         })
     });
+
+    /**
+     *模板
+     */
+    /*var pathName = location.pathname;
+    if(pathName.indexOf("login")==-1){
+        /!*
+         主页面渲染
+         *!/
+        var obj = JSON.parse($.cookie("logInfo"));
+      /!*  $(".aside .profile img").attr("src",obj.tc_avatar);
+        $(".aside .profile h4").html(obj.tc_name);*!/
+        var html = template("logInfo",obj);
+        $(".aside .profile").html(html);
+    }*/
+    var obj = JSON.parse($.cookie("logInfo"));
+    var tpl = '<div class="avatar img-circle"> ' +
+        '<img src="{{tc_avatar}}"> ' +
+        '</div> ' +
+        '<h4>{{tc_name}}</h4>';
+    var render = template.compile(tpl);
+    var html = render(obj);
+    $(".aside .profile").html(html);
 });
