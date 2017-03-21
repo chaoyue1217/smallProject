@@ -2,8 +2,11 @@
  * 讲师管理
  */
 //实现教师数据列表加载
-define(["jquery","template","bootstrap"],function ($,template) {
-     $.ajax({
+define(["jquery","template","util","bootstrap","overlay"],function ($,template,util) {
+    util.setMenu(location.pathname);
+    var pathname = location.pathname;
+    $(".navs a[href='"+pathname+"']").addClass("active");
+    $.ajax({
         type:"get",
          url:"/api/teacher",
          dataType:"json",
@@ -12,6 +15,7 @@ define(["jquery","template","bootstrap"],function ($,template) {
              //模板引擎作用：模板+数据=静态标签
              var html = template("teacherTpl",{list:data.result});
              $("#teacherList").html(html);
+            //查看讲师功能
              $(".teacherBtns").find("a:eq(0)").click(function () {
                  //处理弹窗
                  //
@@ -40,24 +44,23 @@ define(["jquery","template","bootstrap"],function ($,template) {
                  var tc_id=$(this).closest("td").attr("data-id");
                  var td = $(this).parent("td");
                  var that = this;
-                    $.ajax({
-                        type:'get',
-                        url:"/api/teacher/handle",
-                        data:{tc_id:tc_id,tc_status:tc_status},
-                        dataType:"json",
-                        success:function (data) {
-                            td.attr("data-status",data.result.tc_status);
-                            if(data.result.tc_status==0){
-                                $(that).text("启 用");
-                            }else{
-                                $(that).text("注 销");
-                            }
-                        }
-                    })
+                 $.ajax({
+                     type:'get',
+                     url:"/api/teacher/handle",
+                     data:{tc_id:tc_id,tc_status:tc_status},
+                     dataType:"json",
+                     success:function (data) {
+                         td.attr("data-status",data.result.tc_status);
+                         if(data.result.tc_status==0){
+                             $(that).text("启 用");
+                         }else{
+                             $(that).text("注 销");
+                         }
+                     }
+                 })
              });
          }
      });
-    //查看讲师功能
 
 
 });

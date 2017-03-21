@@ -1,9 +1,5 @@
+//公共js
 define(["jquery","template","cookie"],function ($,template) {
-
-    /*NProgress.start();
-
-    NProgress.done();*/
-
     $('.navs ul').prev('a').on('click', function () {
         $(this).next().slideToggle();
     });
@@ -57,19 +53,8 @@ define(["jquery","template","cookie"],function ($,template) {
     });
 
     /**
-     *模板
+     *模板渲染个人信息
      */
-    /*var pathName = location.pathname;
-    if(pathName.indexOf("login")==-1){
-        /!*
-         主页面渲染
-         *!/
-        var obj = JSON.parse($.cookie("logInfo"));
-      /!*  $(".aside .profile img").attr("src",obj.tc_avatar);
-        $(".aside .profile h4").html(obj.tc_name);*!/
-        var html = template("logInfo",obj);
-        $(".aside .profile").html(html);
-    }*/
     var obj = JSON.parse($.cookie("logInfo"));
     var tpl = '<div class="avatar img-circle"> ' +
         '<img src="{{tc_avatar}}"> ' +
