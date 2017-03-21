@@ -27,14 +27,15 @@
             <li class="active">{{tInfo}}</li>
         </ol>
         <div class="teacher-add">
+         <br><br>
             <form class="form-horizontal col-xs-offset-2" id="teacherForm">
                 <div class="form-group">
                     <label for="" class="col-xs-3 control-label">姓名</label>
                     <div class="col-xs-4">
                         {{if tc_id}}
-                        <input type="hidden" data-required data-description="tcName" data-describedby="tcNameInfo" name="tc_id" value="{{tc_id}}">
+                        <input type="hidden" name="tc_id" value="{{tc_id}}">
                         {{/if}}
-                        <input name="tc_name" type="text" value="{{tc_name}}" class="form-control input-sm" placeholder="讲师名称">
+                        <input name="tc_name" data-required data-description="tcName" data-describedby="tcNameInfo" type="text" value="{{tc_name}}" class="form-control input-sm" placeholder="讲师名称">
                     </div>
                     <div class="col-xs-2" id="tcNameInfo"></div>
                 </div>

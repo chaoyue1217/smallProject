@@ -51,14 +51,14 @@
             },
             description:{
                 tcName:{
-                    reqired:"用户名不能为空"
+                    required:"用户名不能为空"
                 },
                 tcPass:{
                     required:"密码不能为空",
                     pattern:"只能是六位数字"
                 },
                 joinDate:{
-                    requried:"入职日期不能为空"
+                    required:"入职日期不能为空"
                 }
             }
         });
