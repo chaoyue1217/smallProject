@@ -1,6 +1,7 @@
 /**
  * 添加讲师
- */define(["jquery","util","template","datepicker","language","validate","form"],function ($,util,template) {
+ */
+define(["jquery","util","template","datepicker","language","validate","form"],function ($,util,template) {
     var tc_id = util.queryString("tc_id");
     util.setMenu("/teacher/list")
     if(tc_id){

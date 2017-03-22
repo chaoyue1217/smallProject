@@ -24,4 +24,4 @@ define(["jquery"],function ($) {
             return obj[pname];
         }
     }
-})
+});
