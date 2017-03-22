@@ -21,7 +21,6 @@ define(["jquery", "template", "ckeditor", "region", "validate", "form", "datepic
                 uploader: "/api/uploader/avatar",
                 onUploadSuccess: function (file, data) {
                     data = JSON.parse(data);
-                    console.log(data);
                     $(".preview img").attr("src", data.result.path);
                 }
             });
