@@ -34,7 +34,7 @@
         <div class="brief">
             <div class="thumb">
                 {{if cs_cover}}
-                    <img src="cs_cover" alt="">
+                    <img src="{{cs_cover}}" alt="">
                 {{/if}}
             </div>
             <dl class="info">
@@ -101,13 +101,13 @@
                 <div class="form-group">
                     <label for="" class="col-xs-2 control-label">分类</label>
                     <div class="col-xs-8">
-                        <select class="form-control input-sm">
+                        <select id="topCategory" class="form-control input-sm">
                             <!--category.top中的cg_id存放的父id-->
                             {{each category.top as item}}
                             <option {{if item.cg_id==cs_cg_pid}}selected{{/if}} value="{{item.cg_id}}">{{item.cg_name}}</option>
                             {{/each}}
                         </select>
-                        <select name="cs_cg_id" class="form-control input-sm">
+                        <select id="childCategory" name="cs_cg_id" class="form-control input-sm">
                             {{each category.childs as item}}
                             <option {{if item.cg_id==cs_cg_id}}selected{{/if}} value="{{item.cg_id}}">{{item.cg_name}}</option>
                             {{/each}}

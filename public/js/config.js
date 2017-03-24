@@ -18,6 +18,7 @@ require.config({
         uploadify: "uploadify/jquery.uploadify.min",
         region: "jquery-region/jquery.region",
         ckeditor: "ckeditor/ckeditor",
+        jcrop:"jcrop/Jcrop",
         util: "../js/util",
         overlay: "../js/overlay",
     },
@@ -38,6 +39,9 @@ require.config({
         ckeditor: {
             exports: "CKEDITOR",
             deps: ["jquery"]
+        },
+        jcrop:{
+            deps:["jquery"]
         }
     }
 });
